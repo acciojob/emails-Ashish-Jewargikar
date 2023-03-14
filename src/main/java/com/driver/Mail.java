@@ -1,22 +1,39 @@
 package com.driver;
 
-//import java.sql.Date;
 import java.util.Date;
 
-class Mail {
-    Date date;
-    String senderId;
-    String message;
+public class Mail {
+    private Date date;
+    private String sender;
+    private String message;
 
-    public Mail(Date date, String senderId, String message) {
+    public Mail(Date date, String sender, String message) {
         this.date = date;
-        this.senderId = senderId;
+        this.sender = sender;
         this.message = message;
     }
 
-	
+    public Date getDate() {
+        return date;
+    }
 
-//	public Mail(java.util.Date date2, String sender, String message2) {
-//		// TODO Auto-generated constructor stub
-//	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

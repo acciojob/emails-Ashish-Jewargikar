@@ -7,24 +7,23 @@ public class Meeting {
     private LocalTime endTime;
 
     public Meeting(LocalTime startTime, LocalTime endTime){
-        this.setStartTime(startTime);
-        this.setEndTime(endTime);
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
-	public LocalTime getStartTime() {
-		return startTime;
-	}
+    public LocalTime getStartTime() {
+        return startTime;
+    }
 
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
 
-	public LocalTime getEndTime() {
-		return endTime;
-	}
+    public LocalTime getEndTime() {
+        return endTime;
+    }
 
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
-
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
 }

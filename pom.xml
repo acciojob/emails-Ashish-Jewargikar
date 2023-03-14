@@ -72,6 +72,11 @@
             <artifactId>velocity</artifactId>
             <version>1.7</version>
         </dependency>
+        <dependency>
+        	<groupId>com.example</groupId>
+        	<artifactId>StudentLibrary</artifactId>
+        	<version>2.7.9</version>
+        </dependency>
     </dependencies>
 
 

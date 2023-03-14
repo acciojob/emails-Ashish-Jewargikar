@@ -10,6 +10,7 @@ public class Email {
         this.password = "Accio@123";
     }
 
+
     public String getEmailId() {
         return emailId;
     }
@@ -17,14 +18,6 @@ public class Email {
     public String getPassword() {
         return password;
     }
-    
-    public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
     public void changePassword(String oldPassword, String newPassword){
         //Change password only if the oldPassword is equal to current password and the new password meets all of the following:
@@ -33,52 +26,78 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-    	if (!oldPassword.equals(getPassword())) {
-            System.out.println("The old password is incorrect.");
-            return;
-        }
-        if (newPassword.length() < 8) {
-            System.out.println("The new password must be at least 8 characters long.");
-            return;
-        }
-        boolean hasUppercase = false;
-        boolean hasLowercase = false;
-        boolean hasDigit = false;
-        boolean hasSpecialChar = false;
-        for (int i = 0; i < newPassword.length(); i++) {
-            char c = newPassword.charAt(i);
-            if (Character.isUpperCase(c)) {
-                hasUppercase = true;
-            } else if (Character.isLowerCase(c)) {
-                hasLowercase = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            } else {
-                hasSpecialChar = true;
+        if(oldPassword.equals(this.password)){
+            if(isValid(newPassword)){
+                System.out.println("Password changed successfully!");
+                password=newPassword;
             }
-            if (hasUppercase && hasLowercase && hasDigit && hasSpecialChar) {
-                break;
+            else{
+                System.out.println("The new password is not valid!");
             }
         }
-        if (!hasUppercase) {
-            System.out.println("The new password must contain at least one uppercase letter.");
-            return;
+        else{
+            System.out.println("The given password does not match current password!");
         }
-        if (!hasLowercase) {
-            System.out.println("The new password must contain at least one lowercase letter.");
-            return;
-        }
-        if (!hasDigit) {
-            System.out.println("The new password must contain at least one digit.");
-            return;
-        }
-        if (!hasSpecialChar) {
-            System.out.println("The new password must contain at least one special character.");
-            return;
-        }
-        setPassword(newPassword);
-        System.out.println("Password changed successfully.");
     }
 
-	
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+
+    public boolean isValid(String pas){
+        if(pas.length()<8){
+            return false;
+        }
+        if(!isUppercase(pas)){
+          return false;
+        }
+        if(!isLowercase(pas)){
+            return false;
+        }
+        if(!isDigit(pas)){
+            return false;
+        }
+        if(!isSpecial(pas)){
+            return false;
+        }
+        return true;
+    }
+    public boolean isUppercase(String pas){
+        for(int i=0;i<pas.length();i++){
+            if(Character.isUpperCase(pas.charAt(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isLowercase(String pas){
+        for(int i=0;i<pas.length();i++){
+            if(Character.isLowerCase(pas.charAt(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isDigit(String pas){
+        for(int i=0;i<pas.length();i++){
+            if(Character.isDigit(pas.charAt(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isSpecial(String pas){
+        for(int i=0;i<pas.length();i++){
+            if(Character.isDigit(pas.charAt(i))){
+                continue;
+            }
+            else if (Character.isLetter(pas.charAt(i))) {
+                continue;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+    }
 }
